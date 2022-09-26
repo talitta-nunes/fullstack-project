@@ -12,11 +12,11 @@ export const AppDataSource = new DataSource({
   logging: true,
   entities:
     process.env.NODE_ENV === "production"
-      ? ["dist/src/models/*.js"]
+      ? ["dist/models/*.js"]
       : ["src/models/*.ts"],
   migrations:
     process.env.NODE_ENV === "production"
-      ? ["dist/src/migrations/*.js"]
+      ? ["dist/migrations/*.js"]
       : ["src/migrations/*.ts"],
 });
 
