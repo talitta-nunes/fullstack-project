@@ -27,7 +27,7 @@ const ModalContact = () => {
     email: Yup.string()
       .required("E-mail obrigatório")
       .email("E-mail inválido!"),
-    telefone: Yup.string().matches(phoneRegExp, "O numero de telefone não é válido"),
+    phone: Yup.string().matches(phoneRegExp, "O numero de telefone não é válido"),
   });
 
   const {
@@ -101,11 +101,11 @@ const ModalContact = () => {
                 errors={errors.email?.message}
               />
               <Input
-                name={"telefone"}
+                name={"phone"}
                 placeholder="Telefone"
                 label="Telefone"
                 register={register}
-                errors={errors.telefone?.message}
+                errors={errors.phone?.message}
               />
             </ModalBody>
             <ModalFooter

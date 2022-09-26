@@ -4,11 +4,8 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useToast } from "@chakra-ui/react";
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
-import { IconButton } from "@chakra-ui/react";
 
-
-const Client = () => {
+const Contact = () => {
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const formSchema = Yup.object().shape({
@@ -35,16 +32,17 @@ const Client = () => {
 
   const toast = useToast();
 
-  const handleClient = (client) => {
+  const handleContact = (contact) => {
     toast({
-      title: "Registro de Cliente.",
-      description: "Client adicionado ao banco de dados.",
+      title: "Registro de Contato.",
+      description: "Contato adicionado ao banco de dados.",
       status: "success",
       duration: 5000,
       isClosable: true,
     });
-    console.log(client);
+    console.log(contact);
   };
+ 
   return (
     <Center w={"100vw"} h={"100vh"} bgColor={"#7192BE"}>
       <VStack
@@ -55,17 +53,15 @@ const Client = () => {
         borderRadius={"8px"}
         p={3}
         as={"form"}
-        onSubmit={handleSubmit(handleClient)}
+        onSubmit={handleSubmit(handleContact)}
       >
-        <Heading
+     
+          <Heading 
           color="#ffffff"
-          fontSize="18px"
-          fontWeight="normal"
-          textAlign={"justify"}
-        >
-          Cadastro Cliente
-        </Heading>
-
+            fontSize="18px"
+            fontWeight="normal"
+            textAlign={"justify"}>Cadastro Contato</Heading>
+       
         <Input
           name={"username"}
           placeholder="Nome Completo"
@@ -88,18 +84,23 @@ const Client = () => {
           errors={errors.phone?.message}
         />
         <HStack>
-          <Button type={"submit"} w={"80%"} colorScheme={"blue"}>
+          <Button
+            type={"submit"}
+            w={"80%"}
+            colorScheme={"blue"}
+          >
             Registrar
           </Button>
-          <IconButton aria-label="edit" icon={<EditIcon color="green.500" />} />
-          <IconButton
-            aria-label="delete"
-            icon={<DeleteIcon color="red.500" />}
-          />
+          <Button type={"submit"} w={"50%"} colorScheme={"yellow"}>
+            Editar
+          </Button>
+          <Button type={"submit"} w={"50%"} colorScheme={"red"}>
+            Excluir
+          </Button>
         </HStack>
       </VStack>
     </Center>
   );
 };
 
-export default Client;
+export default Contact;

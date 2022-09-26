@@ -49,13 +49,7 @@ const Login = () => {
         <Heading fontSize={"20px"} textColor={"blue.600"}>
           Login Staff
         </Heading>
-        <Input
-          name={"username"}
-          placeholder="Nome Completo"
-          label="Nome Completo"
-          register={register}
-          errors={errors.username?.message}
-        />
+      
         <Input
           name={"email"}
           placeholder="Email"

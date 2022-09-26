@@ -4,9 +4,14 @@ import Input from "../../components/input";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-
+import { toast } from "react-toastify";
+import api from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+
+  const navigate = useNavigate();
+
   const formSchema = Yup.object().shape({
     username: Yup.string()
       .required("Nome obrigatório")
@@ -36,7 +41,18 @@ const Signup = () => {
   });
  
   const handleRegister = (data) => {
-    console.log(data);
+    //console.log(data);
+    api
+      .post('/users', data)
+      .then(() => {
+        navigate("/login");
+        toast.success('Cadastro realizado com sucesso! Faça o login')
+      })
+      .catch((err) => {
+        console.log(err)
+        toast.error('Cadastro inválido')
+      })
+  
   };
   
   return (
