@@ -8,8 +8,9 @@ import clientRouter from "./routes/client.routes";
 import contactRouter from "./routes/contact.routes";
 import handleAppErrorMiddleware from "./middlewares/handleAppErrorMiddleWare";
 
-
+var cors = require("cors");
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 

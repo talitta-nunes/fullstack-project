@@ -4,7 +4,7 @@ import Input from "../../components/input";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { useToast } from "@chakra-ui/react";
 import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
 
@@ -40,17 +40,31 @@ const Signup = () => {
     resolver: yupResolver(formSchema),
   });
  
+  const toast = useToast();
+
   const handleRegister = (data) => {
     //console.log(data);
     api
       .post('/users', data)
       .then(() => {
         navigate("/login");
-        toast.success('Cadastro realizado com sucesso! Faça o login')
+        toast({
+          title: "Cadastro de servidores.",
+          description: "'Cadastro realizado com sucesso! Faça o login'",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
       })
       .catch((err) => {
         console.log(err)
-        toast.error('Cadastro inválido')
+       toast({
+         title: "Erro",
+         description: "Cadastro inválido",
+         status: "error",
+         duration: 5000,
+         isClosable: true,
+       });
       })
   
   };

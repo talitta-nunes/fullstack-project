@@ -16,7 +16,7 @@ export const UserProvider = ({ children }) => {
 
   const login = (user) => {
     api
-      .post("/users/login", user)
+      .post("/login", user)
       .then((response) => {
         toast.success("Bem vindo!");
         localStorage.setItem("@FST:token", response.data.token);
