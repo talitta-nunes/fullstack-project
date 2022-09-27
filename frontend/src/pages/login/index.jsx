@@ -3,13 +3,10 @@ import Input from "../../components/input";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { useUser } from "../../providers/user";
 
 const Login = () => {
   const formSchema = Yup.object().shape({
-    username: Yup.string()
-      .required("Nome obrigatório")
-      .max(18, "Nome no máximo 18 caracteres")
-      .matches(/^[a-zA-Z_ ]*$/, "Somente letras permitidas"),
     email: Yup.string()
       .required("E-mail obrigatório")
       .email("E-mail inválido!"),
@@ -30,9 +27,10 @@ const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const handleLogin = (data) => {
-    console.log(data);
-  };
+  const { login } = useUser();
+
+  const handleLogin = (data) => login(data);
+  
 
   return (
     <Center w={"100vw"} h={"100vh"} bgColor={"#adb9e3"}>
@@ -49,7 +47,7 @@ const Login = () => {
         <Heading fontSize={"20px"} textColor={"blue.600"}>
           Login Staff
         </Heading>
-      
+
         <Input
           name={"email"}
           placeholder="Email"

@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useToast } from "@chakra-ui/react";
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { IconButton } from "@chakra-ui/react";
 
 const Contact = () => {
   const phoneRegExp =
@@ -55,13 +57,15 @@ const Contact = () => {
         as={"form"}
         onSubmit={handleSubmit(handleContact)}
       >
-     
-          <Heading 
+        <Heading
           color="#ffffff"
-            fontSize="18px"
-            fontWeight="normal"
-            textAlign={"justify"}>Cadastro Contato</Heading>
-       
+          fontSize="18px"
+          fontWeight="normal"
+          textAlign={"justify"}
+        >
+          Cadastro Contato
+        </Heading>
+
         <Input
           name={"username"}
           placeholder="Nome Completo"
@@ -84,19 +88,14 @@ const Contact = () => {
           errors={errors.phone?.message}
         />
         <HStack>
-          <Button
-            type={"submit"}
-            w={"80%"}
-            colorScheme={"blue"}
-          >
+          <Button type={"submit"} w={"80%"} colorScheme={"blue"}>
             Registrar
           </Button>
-          <Button type={"submit"} w={"50%"} colorScheme={"yellow"}>
-            Editar
-          </Button>
-          <Button type={"submit"} w={"50%"} colorScheme={"red"}>
-            Excluir
-          </Button>
+          <IconButton aria-label="edit" icon={<EditIcon color="green.500" />} />
+          <IconButton
+            aria-label="delete"
+            icon={<DeleteIcon color="red.500" />}
+          />
         </HStack>
       </VStack>
     </Center>

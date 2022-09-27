@@ -16,7 +16,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const ModalContact = () => {
+const ModalEdit = () => {
   const phoneRegExp =
       /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const formSchema = Yup.object().shape({
@@ -74,7 +74,7 @@ const ModalContact = () => {
               textAlign={"center"}
               borderRadius={"8px"}
             >
-              Adicionar contato
+              Editar contato
               <ModalCloseButton />
             </ModalHeader>
             <ModalBody
@@ -120,7 +120,7 @@ const ModalContact = () => {
                 color={"black"}
                 type="submit"
               >
-                Add Contato
+                Editar Contato
               </Button>
             </ModalFooter>
           </ModalContent>
@@ -129,4 +129,4 @@ const ModalContact = () => {
     </>
   );
 };
-export default ModalContact;
+export default ModalEdit;

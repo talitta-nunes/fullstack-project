@@ -43,7 +43,6 @@ const Signup = () => {
   const toast = useToast();
 
   const handleRegister = (data) => {
-    //console.log(data);
     api
       .post('/users', data)
       .then(() => {
